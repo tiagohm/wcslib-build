@@ -35,3 +35,11 @@ jobs:
       - name: Make
         working-directory: wcslib-8.1
         run: make check
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: libwcs
+          path: |
+            wcslib-8.1/C/libwcs.dll.8.1
+          retention-days: 3
