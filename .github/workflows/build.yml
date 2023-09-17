@@ -24,3 +24,7 @@ jobs:
 
       - name: Unzip
         run: bzcat wcslib-8.1.tar.bz2 | tar pvxf -
+
+      - name: Configure
+        working-directory: wcslib-8.1
+        run: ./configure
