@@ -4,9 +4,37 @@ on:
   workflow_dispatch:
 
 jobs:
+  build-on-linux:
+    name: Build on Linux
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Unzip
+        run: bzcat wcslib-8.1.tar.bz2 | tar pvxf -
+
+      - name: Configure
+        working-directory: wcslib-8.1
+        run: ./configure
+
+      - name: Make
+        working-directory: wcslib-8.1
+        run: make check
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: libwcs
+          path: |
+            wcslib-8.1/C/libwcs.so.8.1
+          retention-days: 3
+
   build-on-windows:
     name: Build on Windows
     runs-on: windows-latest
+    needs: build-on-linux
 
     defaults:
       run:
