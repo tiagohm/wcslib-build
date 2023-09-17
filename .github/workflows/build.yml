@@ -20,7 +20,7 @@ jobs:
           install: mingw-w64-x86_64-openssl
 
       - name: Install GCC
-        run: pacman --noconfirm -S gcc diffutils
+        run: pacman --noconfirm -S gcc diffutils make
 
       - name: Checkout
         uses: actions/checkout@v3
