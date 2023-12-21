@@ -13,14 +13,14 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Unzip
-        run: bzcat wcslib-8.1.tar.bz2 | tar pvxf -
+        run: bzcat wcslib-8.2.2.tar.bz2 | tar pvxf -
 
       - name: Configure
-        working-directory: wcslib-8.1
+        working-directory: wcslib-8.2.2
         run: ./configure
 
       - name: Make
-        working-directory: wcslib-8.1
+        working-directory: wcslib-8.2.2
         run: make check
 
       - name: Upload Artifact
@@ -28,8 +28,8 @@ jobs:
         with:
           name: libwcs
           path: |
-            wcslib-8.1/C/libwcs.so.8.1
-          retention-days: 3
+            wcslib-8.2.2/C/libwcs.so.8.2.2
+          retention-days: 7
 
   build-on-windows:
     name: Build on Windows
@@ -54,14 +54,14 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Unzip
-        run: bzcat wcslib-8.1.tar.bz2 | tar pvxf -
+        run: bzcat wcslib-8.2.2.tar.bz2 | tar pvxf -
 
       - name: Configure
-        working-directory: wcslib-8.1
+        working-directory: wcslib-8.2.2
         run: ./configure
 
       - name: Make
-        working-directory: wcslib-8.1
+        working-directory: wcslib-8.2.2
         run: make check
 
       - name: Upload Artifact
@@ -69,5 +69,5 @@ jobs:
         with:
           name: libwcs
           path: |
-            wcslib-8.1/C/libwcs.dll.8.1
-          retention-days: 3
+            wcslib-8.2.2/C/libwcs.dll.8.2.2
+          retention-days: 7
