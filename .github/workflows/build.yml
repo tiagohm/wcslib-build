@@ -48,7 +48,7 @@ jobs:
           install: mingw-w64-x86_64-openssl
 
       - name: Install GCC
-        run: pacman --noconfirm -S gcc diffutils make
+        run: pacman --noconfirm -S mingw-w64-x86_64-gcc diffutils make
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -62,7 +62,7 @@ jobs:
 
       - name: Make
         working-directory: wcslib-8.2.2
-        run: make check
+        run: make check CFLAGS=-DNO_OLDNAMES
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
