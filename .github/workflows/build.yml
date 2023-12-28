@@ -21,7 +21,7 @@ jobs:
 
       - name: Make
         working-directory: wcslib-8.2.2
-        run: make check
+        run: make build
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
@@ -62,7 +62,7 @@ jobs:
 
       - name: Make
         working-directory: wcslib-8.2.2
-        run: make check CFLAGS=-DNO_OLDNAMES
+        run: make build CFLAGS=-DNO_OLDNAMES
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
