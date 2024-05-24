@@ -27,7 +27,7 @@ jobs:
         run: make build
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: libwcs
           path: |
@@ -71,7 +71,7 @@ jobs:
         run: make build CFLAGS=-DNO_OLDNAMES
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: libwcs
           path: |
