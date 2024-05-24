@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Download
         run: wget http://www.atnf.csiro.au/people/mcalabre/WCS/wcslib-8.3.tar.bz2 -O wcslib.tar.bz2
@@ -54,7 +54,7 @@ jobs:
         run: pacman --noconfirm -S mingw-w64-x86_64-gcc diffutils make
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Download
         run: wget http://www.atnf.csiro.au/people/mcalabre/WCS/wcslib-8.3.tar.bz2 -O wcslib.tar.bz2
