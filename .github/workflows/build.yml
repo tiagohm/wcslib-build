@@ -12,15 +12,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Download
+        run: wget http://www.atnf.csiro.au/people/mcalabre/WCS/wcslib-8.3.tar.bz2 -O wcslib.tar.bz2
+
       - name: Unzip
-        run: bzcat wcslib-8.2.2.tar.bz2 | tar pvxf -
+        run: bzcat wcslib.tar.bz2 | tar pvxf -
 
       - name: Configure
-        working-directory: wcslib-8.2.2
+        working-directory: wcslib-8.3
         run: ./configure
 
       - name: Make
-        working-directory: wcslib-8.2.2
+        working-directory: wcslib-8.3
         run: make build
 
       - name: Upload Artifact
@@ -28,7 +31,7 @@ jobs:
         with:
           name: libwcs
           path: |
-            wcslib-8.2.2/C/libwcs.so.8.2.2
+            wcslib-8.3/C/libwcs.so.8.3
           retention-days: 7
 
   build-on-windows:
@@ -53,15 +56,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Download
+        run: wget http://www.atnf.csiro.au/people/mcalabre/WCS/wcslib-8.3.tar.bz2 -O wcslib.tar.bz2
+
       - name: Unzip
-        run: bzcat wcslib-8.2.2.tar.bz2 | tar pvxf -
+        run: bzcat wcslib.tar.bz2 | tar pvxf -
 
       - name: Configure
-        working-directory: wcslib-8.2.2
+        working-directory: wcslib-8.3
         run: ./configure
 
       - name: Make
-        working-directory: wcslib-8.2.2
+        working-directory: wcslib-8.3
         run: make build CFLAGS=-DNO_OLDNAMES
 
       - name: Upload Artifact
@@ -69,5 +75,5 @@ jobs:
         with:
           name: libwcs
           path: |
-            wcslib-8.2.2/C/libwcs.dll.8.2.2
+            wcslib-8.3/C/libwcs.dll.8.3
           retention-days: 7
